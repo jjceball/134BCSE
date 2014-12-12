@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Quizzes for the Lazy - Quiz Preview</title>
+		<meta charset="utf-8">
+		<style type="text/css">
+			li { padding-bottom: 20px; }
+			#quizHeader { text-align: center; }
+			#submit { text-align: center; }
+			.nopadding-bottom { margin-bottom: 0; }
+			.nopadding-top { font-size: 75%; }
+			#maxTextWidth { 
+				margin-left: auto;
+				margin-right: auto;
+				max-width: 800px;
+			}
+			.fill-in {
+				border-left-color: transparent;
+				border-right-color: transparent;
+				border-top-color: transparent;
+				border-bottom-color: black;
+				border-width: 1px;
+			}
+			#timer {
+				position: fixed;
+				width: 10em;
+				height: 9em;
+				text-align: center;
+				background-color: silver;
+				right: 1em;
+				bottom: 1em;
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<p>Quizzes for the Lazy<br>By Team Awesome</p>			
+		</header>
+
+		<hr>
+		
+		<section id="maxTextWidth">
+			<header id="quizHeader">
+				<h1>Quiz 1</h1>
+				<h2>CSE 134B<br>Professor Powell</h2>			
+			</header>
+	
+			<p>
+				<strong>Notes about the quiz:<br></strong>
+				Information for the quiz taker, such as how many points
+				is required to pass, how each question is weighed, which
+				questions correspond to what textbook chapters, etc. etc.
+			</p>
+			<form>
+				<div id="studentInfo">
+					<label>Name: <input type="text" class="fill-in" name="studentName" id="studentName" size="50"></label><br>
+					<label>ID: <input type="text" class="fill-in" name="studentID" id="studentID" size="54"></label><br>
+				</div>
+				<ol>
+					<li>
+						(1 point) This sentence is false.<br>
+						<input type="radio" name="question1" id="question1true">True  
+						<input type="radio" name="question1" id="question1false">False<br>
+						<input type="button" name="clearButton1" id="clearButton1" value="Clear">
+					</li>
+					<li>
+						(3 points) Name all members of Team Awesome.<br>
+						<input type="checkbox" name="question2" id="question2box1"> Gus Gus<br>
+						<input type="checkbox" name="question2" id="question2box2"> Amy<br>
+						<input type="checkbox" name="question2" id="question2box3"> Jay<br>
+						<input type="checkbox" name="question2" id="question2box4"> John<br>
+						<input type="checkbox" name="question2" id="question2box5"> Sam<br>
+						<input type="checkbox" name="question2" id="question2box6"> Thomas<br>
+						<input type="checkbox" name="question2" id="question2box7"> Pinocchio<br>
+						<input type="checkbox" name="question2" id="question2box8"> None of the above<br>
+					</li>
+					<li>
+						(2 points) This was written in:<br>
+						<input type="radio" name="question3" id="question3box1"> CSS<br>
+						<input type="radio" name="question3" id="question3box2"> HTML<br>
+						<input type="radio" name="question3" id="question3box3"> Ajax<br>
+						<input type="radio" name="question3" id="question3box4"> JavaScript<br>
+						<input type="button" name="clearButton3" id="clearButton3" value="Clear">
+					</li>
+					<li>
+						<label>
+							(3 points) This quiz preview is an example of a 
+							<input type="text" class="fill-in" name="question4" id="question4" size="15">.<br>
+						</label>
+					</li>
+					<li>
+						<label>
+							(3 points) The professor likes to 
+							<input type="text" class="fill-in" name="question5" id="question5" size="40"> while he codes.<br>
+						</label>
+					</li>
+					<li>
+						<label>
+							(3 points) What is your favorite color?<br><br>Answer:
+							<input type="text" class="fill-in" name="question6" id="question6"><br>
+						</label>
+					</li>
+					<li>
+						<label>
+							(10 points) Write valid HTML 5 code to display "Hello World!".<br>
+							<textarea name="question7" id="question7" rows="15" cols="80"> </textarea><br>
+						</label>
+						<input type="button" name="saveButton6" id="saveButton6" value="Save">
+						<input type="button" name="clearButton6" id="clearButton6" value="Clear">
+					</li>
+				</ol>
+				<div id="submit">
+					<p>Please check all your answers before submitting!</p>
+					<input type="submit" name="submitButton" id="submitButton" value="Submit"> 
+					<input type="button" name="saveAllButton" id="saveAllButton" value="Save All"> 
+					<input type="button" name="clearAllButton" id="clearAllButton" value="Clear All">
+				</div>
+			</form>
+		</section>
+		<div id="timer">
+			<p class="nopadding-bottom"><strong>Time remaining:<br>15:00</strong></p>
+			<p class="nopadding-top">
+				Notes:<br>
+				<textarea id="notes" maxlength="20" rows="1" cols="10" wrap="soft"> </textarea>
+			</p>
+		</div>
+	</body>
+</html>

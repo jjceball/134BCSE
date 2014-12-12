@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Quiz Maker</title>
+  <link type="image/png" href="img/file.png" rel="shortcut icon">
+  <link type="text/css" href="css/maker.css" rel="stylesheet">
+  <link type="text/css" href="css/joyride-2.1.css" rel="stylesheet">
+</head>
+<body class="font_calibri">  
+  <!--===============================HEADER===============================-->
+  <header>
+    <nav id="h_left" class="hf_left">
+      <ul>
+        <li><a class="nav_btn" href="maker.html">Maker</a></li>
+        <li><a class="nav_btn" href="http://classes.pint.com/cse134b/homework/hw4.html">About</a></li>
+        <li><a class="nav_btn" href="http://classes.pint.com/cse134b/">Contact</a></li>
+        <li><a class="nav_btn" href="help.html" title="Help, not just anybody!">Help</a></li>
+        <li><a class="nav_btn" href="#" title="tut" id="tutorialBtn">Tutorial</a></li>
+      </ul>
+    </nav>
+    <h1 id="h1_header">QUIZ MAKER</h1>
+    <h2 id="h2_header">by Team Awesome</h2>
+  </header>
+  <!--================================BODY================================-->
+  <!--we create all of the different types of questions that you can add to the quiz-->
+  <section id="s_body" class="s_lvl_0">
+    <div id="b_left" class="b_div">
+      <fieldset id="fs_question_type" class="b_field">
+        <legend class="b_legend">QUESTION TYPE</legend>
+        <!--Use ondragstart and ondblclick to add questions under the drag area-->
+        <table id="qt_tf" class="qt q_tf s_lvl_1" draggable="true"
+         ondblclick="addQuestion('dragarea', 'tf');" ondragstart="dragStart(event)">
+          <tr>
+            <td>True/False</td>
+            <td class="align_right" id="trash_tip">
+              <img src="img/draggable_item.png" class="opac_low" alt="D" draggable="false">
+            </td>
+          </tr>
+        </table>
+        <!-- ===============================multiple choice======================================== -->
+        <!--Use ondragstart and ondblclick to add questions under the drag area-->
+        <table id="qt_mc" class="qt q_mc s_lvl_1" draggable="true"
+         ondblclick="addQuestion('dragarea', 'mc');" ondragstart="dragStart(event)">
+          <tr>
+            <td>Multiple choice</td>
+            <td class="align_right">
+              <img src="img/draggable_item.png" class="opac_low" alt="D" draggable="false">
+            </td>
+          </tr>
+        </table>
+        <!-- ===============================fill in the blank======================================== -->
+        <!--Use ondragstart and ondblclick to add questions under the drag area-->
+        <table id="qt_fb" class="qt q_fb s_lvl_1" draggable="true" 
+         ondblclick="addQuestion('dragarea', 'fb');" ondragstart="dragStart(event)">
+          <tr>
+            <td>Fill in the blank</td>
+            <td class="align_right">
+              <img src="img/draggable_item.png" class="opac_low" alt="D" draggable="false">
+            </td>
+          </tr>
+        </table>
+        <!-- ===============================Fill in After======================================== -->
+        <!--Use ondragstart and ondblclick to add questions under the drag area-->
+        <table id="qt_fa" class="qt q_fa s_lvl_1" draggable="true" 
+         ondblclick="addQuestion('dragarea', 'fa');" ondragstart="dragStart(event)"> 
+          <tr>
+            <td>Fill in after</td>
+            <td class="align_right">
+              <img src="img/draggable_item.png" class="opac_low" alt="D" draggable="false">
+            </td>
+          </tr>
+        </table>
+        <!-- ===============================short answer======================================== -->
+        <!--Use ondragstart and ondblclick to add questions under the drag area-->
+        <table id="qt_sa" class="qt q_sa s_lvl_1" draggable="true" 
+         ondblclick="addQuestion('dragarea', 'sa');" ondragstart="dragStart(event)">
+          <tr>
+            <td>Short answer</td>
+            <td class="align_right">
+              <img src="img/draggable_item.png" class="opac_low" alt="D" draggable="false">
+            </td>
+          </tr>
+        </table>
+        <!-- ===============================Add an image======================================== -->
+        <!--Use ondragstart and ondblclick to add questions under the drag area-->
+        <table id="qt_img" class="qt q_img s_lvl_1" draggable="true"
+         ondblclick="addQuestion('dragarea', 'img');" ondragstart="dragStart(event)">
+          <tr>
+            <td>Image</td>
+            <td class="align_right">
+              <img src="img/draggable_item.png" class="opac_low" alt="D" draggable="false">
+            </td>
+          </tr>
+        </table>
+        <!-- ===============================Add instructions======================================== -->
+        <!--Use ondragstart and ondblclick to add questions under the drag area-->
+        <table id="qt_txt" class="qt q_txt s_lvl_1" draggable="true" 
+         ondblclick="addQuestion('dragarea', 'txt');" ondragstart="dragStart(event)">
+          <tr>
+            <td>Instructions</td>
+            <td class="align_right">
+              <img src="img/draggable_item.png" class="opac_low" alt="D" draggable="false">
+            </td>
+          </tr>
+        </table>
+        <!-- ===============================Add sectioning======================================== -->
+        <!--Use ondragstart and ondblclick to add questions under the drag area-->
+        <table id="qt_st" class="qt q_st s_lvl_1" draggable="true" 
+         ondblclick="addQuestion('dragarea', 'st');" ondragstart="dragStart(event)">
+          <tr>
+            <td>Section Title</td>
+            <td class="align_right">
+              <img src="img/draggable_item.png" class="opac_low" alt="D" draggable="false">
+            </td>
+          </tr>
+        </table>
+        <!-- ===============================Add a page break======================================== -->
+        <!--Use ondragstart and ondblclick to add questions under the drag area-->
+        <table id="qt_pb" class="qt q_pb s_lvl_1" draggable="true"
+         ondblclick="addQuestion('dragarea', 'pb');" ondragstart="dragStart(event)">
+          <tr>
+            <td>Page Break</td>
+            <td class="align_right">
+              <img src="img/draggable_item.png" class="opac_low" alt="D" draggable="false">
+            </td>
+          </tr>
+        </table>
+      </fieldset>
+      <!-- ===================================== Quiz Options ===================================== -->
+      <fieldset id="fs_options" class="b_field">      
+        <legend class="b_legend">OPTIONS</legend>
+        <div id="opt_classname" class="option">
+          <div id="text_classname" class="fl text_small">CLASS</div>
+          <input type="text" class="input fr" accesskey="L">
+        </div>
+        <div id="opt_randomize" class="option">
+          <div id="text_randord" class="fl text_small">RANDOM QUESTION ORDER</div>
+          <input type="checkbox" class="input" value="randord" accesskey="O">
+        </div>
+        <!-- ========================Quiz Time limit===================================== -->
+        <div id="opt_quiztime" class="option">
+          <table>
+            <tr>
+              <td id="text_quiztime" class="text_small">QUIZ&nbsp;TIME</td>
+              <td id="in_time"><input id="time_min" style="text-align:center" type="text" class="input" size="2" accesskey="Q"></td>
+              <td id="text_minutes" class="text_small">MINUTES</td>
+              <td id="img_drop"><img src="img/drop.png" width="9" height="9" alt="D"></td>
+            </tr>
+          </table>
+        </div>
+        <!-- =======================Start time and end time. Access keys.============================ -->
+        <div id="start_date">
+          <table class="option">
+            <tr>
+              <td class="text_small">
+                START DATE
+                <input style="width: 183px" class="input" type="datetime-local" name="bdaytime" accesskey="R">
+                  END DATE
+                <input style="width: 183px" id="end_date" class="input" type="datetime-local" name="bdaytime" accesskey="E">
+              </td>
+            </tr>
+          </table>
+        </div>
+        <!-- ==========================Preview, Publish, Save, Clear=================================== -->
+        <!-- ==================Create the buttons, add access keys ==================================== -->
+        <div id="quiz_options" class="option">
+          <table style="width: 100%">
+            <tbody>
+            <tr>
+              <td id="quiz_preview"><input type="button" class="sb quiz_btn text_small" value="PREVIEW" accesskey="P"></td>
+              <td id="quiz_publish"><input id="button_pub" type="button" class="sb quiz_btn text_small" value="PUBLISH" accesskey="B"></td>
+            </tr>
+            <tr>
+              <td id="quiz_save"><input id="button_prev" type="button"  class="sb quiz_btn text_small" value="SAVE" accesskey="S" onclick="saveQuiz()"></td>
+              <td id="quiz_clear"><input id="button_clr" type="button" class="sb quiz_btn text_small" value="CLEAR" accesskey="C"></td>
+            </tr>               
+            </tbody>        
+          </table>
+        </div>
+        <div id="loadquiz" class="option">
+          <input id="loadQuiz" type="button"  class="sb quiz_btn text_small" value="LOAD" accesskey="L" onclick="loadQuiz(url)">          
+        <!--  <select class="input fr" style="width: 100px;">
+          </select> -->
+        </div>
+      </fieldset> 
+    </div>
+    <!-- ===================Enter quiz title and the quiz points counter========================= -->
+    <div id="b_right" class="b_div">
+      <fieldset id="fs_edit_area" class="b_field">  
+        <legend class="b_legend">
+          <input type="text" id="quizTitle" class="input" placeholder="Enter quiz title">
+          <span id="quiz_points_counter"></span>        
+        </legend>
+        <!-- =========================The drop zone to drag and drop questions================================= -->     
+        <div id="dragarea" ondrop="dropSwitch(event)" ondragover="enableDrop(event)">
+          <p>DRAG NEW QUESTION TYPE HERE</p> 
+        </div>
+        
+      </fieldset>
+    </div>
+  </section>
+  <!--===============================FOOTER===============================-->
+  <footer id="s_footer" class="s_lvl_0">
+    <nav id="f_left" class="hf_left">
+      <ul>
+        <li><a href="http://classes.pint.com/cse134b/">CSE 134B &#169;</a></li>
+        <li><a href="http://classes.pint.com/cse134b/">Terms</a></li>
+        <li><a href="http://classes.pint.com/cse134b/">Privacy &amp; Security</a></li>
+      </ul>
+    </nav>
+    <nav id="f_right" class="hf_right">
+      <ul>
+        <li><a href="http://classes.pint.com/cse134b/">tpowell@pint.com</a></li>
+        <li><a href="http://classes.pint.com/cse134b/">555.555.5555</a></li>
+      </ul>
+    </nav>
+  </footer>
+  
+  <!-- =======================This is our tutorial/help system================================ -->
+  <ol id="tour" style="display:none">
+    <li data-id="fs_question_type" data-options="tipLocation:top;tipAnimation:fade" data-button="Where?">
+        <p>
+            To add questions, double click on the item type or drag it to the labeled drag 
+            area (look for the dotted lines!) on the right. 
+        </p>
+    </li>
+    <li data-id="dragarea" data-options="tipLocation:top" data-button="Next">
+        <p>...Drag questions here!</p> 
+    </li>
+    <li data-class="qt_content" data-options="tipLocation:top" data-button="Next">
+        <p>To edit, simply click in the box and start typing</p> 
+    </li>
+    <li data-id="ea_txt" data-options="tipLocation:top" data-button="Next">
+        <p>You can use the buttons to move the item to the top or bottom of the list</p> 
+    </li>
+    <li data-id="img_qt_mc" data-options="tipLocation:left" data-button="Next">
+        <p>You can also drag the items up and down</p>
+    </li>
+    <li data-class="qtmenu_del" data-options="tipLocation:left" data-button="Next">
+        <p>Delete an item from the quiz by clicking on the trashcan</p>
+    </li>
+    <li data-class="qtmenu_pts" data-options="tipLocation:right" data-button="Next">
+        <p>To change the point value of a question, clicking on the number and type the correct value</p>
+    </li>
+    <li data-id="fs_options" data-options="tipLocation:top" data-button="Next">
+        <p>More options are available on the left</p> 
+    </li> 
+    <li data-id="fs_options" data-options="tipLocation:top" data-button="Next">
+        <p>
+            There are hotkeys for each option below.<br>
+            Mac users: Use ctrl + opt + [letter, see help]<br>
+            Windows users: Use alt + [letter, see help]
+        </p>
+    </li> 
+    <li data-id="fs_options" data-options="tipLocation:left" data-button="Next">
+        <p>Class Hotkey: L</p> 
+    </li> 
+    <li data-id="opt_randomize" data-options="tipLocation:left" data-button="Next">
+        <p>Random Order Hotkey: O</p> 
+    </li> 
+    <li data-id="opt_quiztime" data-options="tipLocation:left" data-button="Next">
+        <p>Quiz Time Hotkey: Q</p> 
+    </li> 
+    <li data-id="start_date" data-options="tipLocation:top" data-button="Next">
+        <p>You can also set the available dates to take the quiz</p> 
+    </li> 
+    <li data-id="start_date" data-options="tipLocation:top" data-button="Next">
+        <p>Start Date Hotkey: R</p> 
+    </li> 
+    <li data-id="start_date" data-options="tipLocation:left" data-button="Next">
+        <p>End Date Hotkey: E</p> 
+    </li> 
+    <li data-id="quiz_options" data-options="tipLocation:left" data-button="Next">
+        <p>Preview Hotkey: P</p> 
+    </li> 
+    <li data-id="quiz_options" data-options="tipLocation:right" data-button="Next">
+        <p>Publish Hotkey: B</p> 
+    </li> 
+    <li data-id="quiz_options" data-options="tipLocation:left" data-button="Next">
+        <p>Save Hotkey: S</p> 
+    </li> 
+    <li data-id="quiz_options" data-options="tipLocation:right" data-button="Next">
+        <p>Clear Hotkey: C</p> 
+    </li> 
+    <li data-id="quiz_save" data-options="tipLocation:bottom" data-button="Next">
+        <p>Remember to save frequently!</p> 
+    </li> 
+    <li data-id="quiz_clear" data-options="tipLocation:top" data-button="Next">
+        <p>Hit clear to start over</p> 
+    </li>
+    <li data-id="quiz_publish" data-options="tipLocation:bottom" data-button="Almost There!">
+        <p>When you're all done, click 'Publish' to make the quiz available for students</p> 
+    </li>
+    <li data-id="h_left" data-options="tipLocation:bottom" data-button="End">
+        <h1> Congrats! </h1>
+        <p>Now you're ready to make some quizzes.</p> 
+    </li>
+  </ol>
+  
+  <!--We have added the jQuery scripts to the end of our file to decrease load time. -->
+  <script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+  <script type="text/javascript" src="js/jquery.cookie.js"></script>
+  <script type="text/javascript" src="js/modernizr.mq.js"></script>
+  <script type="text/javascript" src="js/jquery.joyride-2.1.js"></script>
+  <script type="text/javascript" src="js/maker.js"></script>
+
+  <script>
+    addEvent(window, 'onload', startQuestions);
+    addEvent(document.getElementById('tutorialBtn'), 'onclick', tutorial);
+    addEvent(document.getElementById('quiz_preview'), 'onclick', preview);
+    addEvent(document.getElementById('quiz_save'), 'onclick', saveQuiz);
+
+    function tutorial() {
+      jQuery('#tour').joyride({
+        autoStart : true,
+        postStepCallback : function (index, tip) {
+        if (index == 2) {
+          jQuery(this).joyride('set_li', false, 1);
+        }
+      },
+      modal:false,
+      expose: false
+      });
+    }
+    jQuery(window).load(addPts());
+  </script>
+</body>
+</html>

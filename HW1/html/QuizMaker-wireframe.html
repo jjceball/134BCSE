@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Quizzes for the Lazy - Quiz Maker</title>
+		<meta charset="utf-8">
+		<script type="text/javascript">
+			function func(a) {
+				document.getElementById("short").style.display="none";
+				document.getElementById("mult").style.display="none";
+				document.getElementById("tf").style.display="none";
+				document.getElementById("fill").style.display="none";		
+				document.getElementById(a).style.display="block";
+			}	
+		</script>
+		<style>
+			#quizHeader { text-align: center; }
+			#maxTextWidth { 
+				margin-left: auto;
+				margin-right: auto;
+				max-width: 800px;
+			}
+			.fill-in {
+				border-left-color: transparent;
+				border-right-color: transparent;
+				border-top-color: transparent;
+				border-bottom-color: black;
+				border-width: 1px;
+			}
+			.questions {
+				border:2px solid black;
+				padding: 1em;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<p>Quizzes for the Lazy<br>By Team Awesome</p>			
+		</header>
+
+		<hr>
+		<section id="maxTextWidth">
+			<header id="quizHeader">
+				<h1>Quiz Maker</h1>		
+			</header>
+			
+			<form id="quizInfo">
+				<label>Quiz Title: <input type="text" class="fill-in" name="quizTitle" id="quizTitle" size="83"></label><br>
+				<label>Class Name: <input type="text" class="fill-in" name="className" id="className" size="81"></label><br>
+				<label>Professor: <input type="text" class="fill-in" name="professor" id="professor" size="84"></label><br><br>
+				<label>Notes about the quiz:<br>
+					<textarea rows="5" cols="80" name="quizNotes" id="quizNotes"> </textarea>
+				</label><br><br>
+			</form>
+			
+			<form id="question">
+				Add: <button type="button" onclick="func('short')">Short Answer</button>
+				<button type="button" onclick="func('mult')">Multiple Choice</button>
+				<button type="button" onclick="func('tf')">True/False</button>
+				<button type="button" onclick="func('fill')">Fill-in</button>
+			</form><br>
+			
+			<form id="short" style="display:none">
+				<textarea rows="4" cols="50" name="Question" placeholder="Enter Your Question" required> </textarea><br>
+				<textarea rows="4" cols="50" name="answer" placeholder="Enter Your Answer" required> </textarea><br>
+				<button type="button" id="f3">Add Alternate Answer</button><br>
+				<input type="text">
+				<input type="submit" value="Submit">
+			</form>
+			
+			<form id="mult" style="display:none">
+				<textarea rows="4" cols="50" name="Question" placeholder="Enter Your Question" required> </textarea><br>
+				<h4> Check all that are correct.</h4>
+				<button type="button">Add Choice</button><br>
+				
+				<input type="checkbox">
+				<input type="text" placeholder="Enter Choice" required>
+				<button type="button"> Delete </button><br>
+				
+				<input type="checkbox">
+				<input type="text" placeholder="Enter Choice" required>
+				<button type="button"> Delete </button><br>
+				<input type="checkbox">
+				<input type="text" placeholder="Enter Choice" required>
+				<button type="button"> Delete </button><br>
+				
+				<input type="checkbox">
+				<input type="text" placeholder="Enter Choice" required>
+				<button type="button"> Delete </button><br>
+				
+				<input type="submit" value="Submit">
+			</form>
+			
+			<form id="tf" style="display:none">
+				<textarea rows="4" cols="50" name="Question" placeholder="Enter Your Statement" required> </textarea><br>
+				True<input type="radio" name=TorF>
+				False<input type="radio" name=TorF><br>
+				<input type="submit" value="Submit">
+			</form>
+			
+			<form id="fill" style="display:none">
+				<textarea rows="4" cols="50" name="Question" placeholder="Enter Your Statement" required> </textarea><br>
+				<h4> Enter subsection of statement to be left as blank.</h4>
+				<button type="button">Add Another Subsection</button><br>
+				
+				<input type="text" placeholder="Enter Subsection" required>
+				<button type="button"> Delete </button><br>
+				
+				<input type="submit" value="Submit">
+			</form>
+			
+			<br>
+			
+			<div class="questions" draggable="true">
+				<p>1. How many integers are there in rainbow stew special combo number six pack?</p>
+				<input type="radio" name="answers">10<br>
+				<input type="radio" name="answers">100<br>
+				<input type="radio" name="answers">1000<br>
+				<input type="radio" name="answers">None of the above.<br>
+			</div><br>
+			
+			<div class="questions" draggable="true">
+				<p>2. What is the exact number in seconds since King Henry VIII had his last bagel for breaskfast?</p>
+				Answer: <input type="text" class="fill-in">
+			</div><br>
+			
+			<div class="questions" draggable="true">
+				<p>3. UCSD is ... <br>Check all that apply.<br></p>
+				<input type="checkbox">Okay<br>
+				<input type="checkbox">Not Okay<br>
+				<input type="checkbox">Silly<br>
+				<input type="checkbox">Handsome<br>
+				<input type="checkbox">Reasonable<br>
+				<input type="checkbox">Fun<br>
+				<input type="checkbox">Thomas<br>
+			</div>
+			
+			<form>
+				<br><input type="submit" value="Submit Quiz">
+			</form>
+		</section>
+	</body>
+</html>

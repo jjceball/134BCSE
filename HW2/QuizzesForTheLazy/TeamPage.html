@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Team Page</title>
+    <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+        #header { text-align: center; color: white }
+        h1 { text-decoration: underline; font-weight: bold; }
+        h2, div > h3 { text-decoration: underline; }
+        #back {
+            background-color: teal;
+            font-family: 'Oxygen', Arial;
+        }
+        #TextContent{
+            width: 100%;
+            margin: 0 auto;
+        }
+        .container {
+            min-width: 600px;
+            width: 90%;
+            margin: 5px 5%;
+            padding: 0;
+            overflow: hidden;
+        }
+        #topBox, #interestingFacts{
+            width: 88%;
+            margin: 5px 5%;
+            padding: 1%;
+        }
+        .columns-left {
+            min-width: 300px;
+            width: 48%;
+            float: left;
+            margin: 5px 0;
+            padding: 0.5%;
+        }
+        .columns-right {
+            min-width: 300px;
+            width: 48%;
+            float: right;
+            margin: 5px 0;
+            padding: 0.5%;
+        }
+        .columns-clear { clear: both; }
+        .gradDiv {
+            text-align:center;
+            background-color: white;
+            -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
+            -moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
+            -webkit-border-radius: 12px;
+            -moz-border-radius: 7px;
+            border-radius: 7px;
+            background: -webkit-gradient(linear, left top, left bottom,
+                color-stop(0%, white), color-stop(15%, white), color-stop(100%, #D7E9F5));
+            background: -moz-linear-gradient(top, white 0%, white 55%, #D5E4F3 130%);
+        }
+    </style>
+</head>
+<body id="back">
+    <div id="TextContent">
+        <header id="header">
+            <h1>Team Awesome</h1>
+            <h3>What is Team Awesome?</h3>
+            <p>
+                Team Awesome is a group of students that have been put together
+                <del>randomly</del> alphabetically to develop a quiz maker
+                website for CSE 134B at UCSD.
+           </p>
+            <h2>The Members Of Team Awesome</h2>
+        </header>
+        <div id="topBox" class="gradDiv">
+            <h3>Amy Chandler</h3>
+            <img  src="aliens.png" alt="furry kitten, captioned 'aliens'" width="200" height="200"><br>
+            <strong>Hometown: </strong>Escondido/Salem/Vancouver, BC
+            <img src="mapleleaf.png" alt="maple leaf" width="16" height="16"><br>
+            <strong>College: </strong>Marshall<br>
+            <strong>Major: </strong>Computer Science<br>
+            <strong>Skills: </strong>Java, C, various word games<br>
+            <strong>Hobbies:</strong>Reading/Gaming/Scavenging for ketchup chips<br>
+            <strong>Currently Playing: </strong>Dishonored<br>
+        </div>
+        <div class="container">
+            <div id="member1" class="gradDiv columns-left">
+                <h3>Jay Ceballos</h3>
+                <img src="https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-frc3/992779_543883112314707_651804300_n.jpg" alt="monster" width="200" height="200"><br>
+                <strong>Hometown: </strong>Victorville<br>
+                <strong>College: </strong>Marshall<br>
+                <strong>Major: </strong>Computer Engineering<br>
+                <strong>Skills: </strong>Java/Android SDK/Photoshop<br>
+                <strong>Hobbies:</strong>Photography/Soccer<br>
+            </div>
+            <div id="member2" class="gradDiv columns-right">
+                <h3>Sam Chan</h3>
+                <img src="http://mooshinindy.com/wp-content/uploads/2009/07/panda.jpg" alt="panda" width="200" height="200"><br>
+                <strong>Hometown: </strong>Walnut<br>
+                <strong>College: </strong>Muir<br>
+                <strong>Major: </strong>Computer Science<br>
+                <strong>Skills: </strong>HTML/CSS/PHP/C++/Java<br>
+                <strong>Hobbies:</strong>Coding! Duh!<br>
+            </div>
+        </div>
+        <div class="columns-clear"></div>
+        <div class="container">
+            <div id="member3" class="gradDiv columns-left">
+                <h3>Thomas Chang</h3>
+                <img src="http://2.bp.blogspot.com/-iarq5sjWDWc/TWRxt8nPegI/AAAAAAAAA_0/ABabl2TlOO0/s320/emu.jpg" alt="ostrich" width="200" height="200"><br>
+                <strong>Hometown: </strong>LA<br>
+                <strong>College: </strong>Revelle<br>
+                <strong>Major: </strong>Computer Science<br>
+                <strong>Skills: </strong>HTML/CSS<br>
+                <strong>Hobbies:</strong>Video Games<br>
+            </div>
+            <div id="member4" class="gradDiv columns-right">
+                <h3>John Chang</h3>
+                <img src="https://sphotos-a.xx.fbcdn.net/hphotos-ash3/389987_10201522292116567_1859974409_n.jpg" alt="scary sloth" width="200" height="200"><br>
+                <strong>Hometown: </strong>La Mirada<br>
+                <strong>College: </strong>Roosevelt<br>
+                <strong>Major: </strong>Computer Science<br>
+                <strong>Skills: </strong>HTML/CSS, Photoshop, C/C++/Java<br>
+                <strong>Hobbies: </strong>Surfing/Swimming<br>
+            </div>     
+        </div>
+        <div class="columns-clear"></div>
+    </div>
+    <hr>
+    <div id="interestingFacts" class="gradDiv"> 
+	    <h3> Some <b>very</b> interesting facts about Team Awesome </h3>
+	    	<p>We all love UCSD.</p>
+	    	<p>Professor Powell is our favorite professor of all time!</p>
+		 	<p>Jay enjoys singing with blue jays.</p>
+		 	<p>John likes to sneeze.</p>
+		 	<p>Thomas has lived with pandas in China.</p>
+		 	<p>Sam looks up to Sam I Am.</p>
+		 	<p>Amy doesn't like centered text.</p>
+    </div>
+    <hr>
+    <footer id="footer">
+        Calm down -- it's only ones and zeros.<br>
+        Last updated 6:00 July 20, 2013
+    </footer>
+</body>
+</html>

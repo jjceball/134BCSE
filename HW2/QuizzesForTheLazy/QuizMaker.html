@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+		<title>Quiz Maker - Quizzes for the Lazy</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>		
+		<script type="text/javascript">
+            var idNum = 5;
+		    
+			function addAlt(){
+			    var id = idNum++;
+				$("#shortSubmit").prepend("<div id=\"ans" + id + "\"> <br>" + 
+				                          "<textarea name=\"answer\" class=\"makerTA masterTooltip\"" +
+				                          "placeholder=\"Enter alternate answer here\" " +
+				                          "title=\"Enter alter answer\" required>" +
+				                          "</textarea><button type=\"button\" onclick=\"deleteAns('ans" + id + 
+				                          "')\"> Delete </button><br> </div>")
+			}
+			
+	        function addRChoice(){
+                var id = idNum++;
+                $("#multSubmitOne").prepend("<div id=\"rad" + id + "\"> <input type=\"radio\"> " + 
+                                             "<input type=\"text\" placeholder=\"Enter possible answer\" " +
+                                             "class=\"fill-in fill-ans\" required> " +
+                                             "<button type=\"button\" onclick=\"deleteAns('rad" + id + 
+                                             "')\"> Delete </button><br> </div>")
+            }
+			
+			function addCBChoice(){
+			    var id = idNum++;
+				$("#multSubmitAll").prepend("<div id=\"ans" + id + "\"> <input type=\"checkbox\"> " + 
+                                             "<input type=\"text\" placeholder=\"Enter possible answer\" " +
+                                             "class=\"fill-in fill-ans\" required> " +
+    				                         "<button type=\"button\" onclick=\"deleteAns('ans" + id + 
+    				                         "')\"> Delete </button><br> </div>")
+			}
+			
+			function addBlank(a){
+				var a=document.getElementById("blankStatement").value;
+				$("#fillBox").val($("#fillBox").val() + "<BLANK>" + a + "</BLANK>");
+				document.getElementById("blankStatement").value='';
+			}
+			
+			function func(a) {
+				document.getElementById("short").style.display="none";
+				document.getElementById("multOne").style.display="none";
+				document.getElementById("multAll").style.display="none";
+				document.getElementById("tf").style.display="none";
+				document.getElementById("fill").style.display="none";		
+				document.getElementById(a).style.display="block";
+			}
+			
+			function deleteAns(a) {
+			    var elem = document.getElementById(a);
+			    elem.parentNode.removeChild(elem);
+			}
+			
+            $(function() {
+                $( "#sortable" ).sortable();
+                $( "#sortable" ).disableSelection();
+            });
+
+            $(document).ready(function() {
+            // Tooltip only Text
+            $('.masterTooltip').hover(function(){
+                    // Hover over code
+                    var title = $(this).attr('title');
+                    $(this).data('tipText', title).removeAttr('title');
+                    $('<p class="tooltip"></p>')
+                    .text(title)
+                    .appendTo('body')
+                    .fadeIn('slow');
+            }, function() {
+                    // Hover out code
+                    $(this).attr('title', $(this).data('tipText'));
+                    $('.tooltip').remove();
+            }).mousemove(function(e) {
+                    var mousex = e.pageX + 20; //Get X coordinates
+                    var mousey = e.pageY + 10; //Get Y coordinates
+                    $('.tooltip')
+                    .css({ top: mousey, left: mousex })
+            });
+            });
+		</script>
+		<style type="text/css">
+            body { 
+                background-color: teal;
+                font-family: 'Oxygen', Arial;
+            }
+            #pageHeader {
+                font-size: 80%; 
+                color: white;
+            }
+			#quizHeader { text-align: center; }
+            #maxTextWidth { 
+                margin: auto;
+                padding: 1ex 5ex;
+                max-width: 800px;
+                -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
+                -moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
+                -webkit-border-radius: 12px;
+                -moz-border-radius: 7px;
+                border-radius: 7px;
+                background: white;
+            }
+            label:hover, .fill-in:hover, textarea, #currentQuestions, .questions {
+                -webkit-border-radius: 12px;
+                -moz-border-radius: 7px;
+                border-radius: 7px;
+            }
+            #quizInfo { text-align: center; }
+            #quizInfoLeft, #quizInfoRight { 
+                text-align: left; 
+                display: inline-block; 
+            }
+            .quizInfoBlank { width: 60ex; }
+            .timer { width: 10ex; }
+            #quizNotes {
+                height: 20ex; 
+                width: 100%;
+                border-style: double;
+                border-color: black;
+                border-width: 2px;
+                font-weight: bold;
+            }
+            #sortable { color: white; }
+            #currentQuestions { 
+                margin: 2ex 0;
+                padding: 1ex;
+                background: teal;
+            }
+            #currQs { 
+                color: white;
+                font-size: 120%; 
+            }
+            .questions {
+                color: black;
+                font-size: 80%;
+                margin: 5px;
+                padding: 5px;
+                background: white;   
+            }
+            #addQuestions { margin-top: 2ex; }
+            .instr { font-size: 80%; }
+            label:hover { color:white; background-color: teal;}
+            input, textarea { font-family: 'Oxygen', Arial; }
+            .fill-in, .quiz-fill-in {
+                border-style: double;
+                border-left-color: transparent;
+                border-right-color: transparent;
+                border-top-color: transparent;
+                border-bottom-color: black;
+                border-width: 2px;
+                font-weight: bold;
+            }
+            .fill-in:hover {
+                color: teal;
+                border-color: teal teal black teal;      
+            }
+            .fill-in:focus { 
+                color: teal; 
+                background-color: white;
+                border-bottom-color: teal;
+            }
+            .fill-points {
+                width: 10ex;
+                margin-bottom: 10px;
+            }
+            .fill-ans { width: 30ex; }
+            .makerTA {
+                height: 10ex; 
+                width: 100%;
+                border-style: double;
+                border-color: black;
+                border-width: 2px;
+                font-weight: bold;
+            }
+            .makerTA:hover, #quizNotes:hover { 
+                color: white;
+                background-color: teal;
+                border-color: black;
+            }  
+            .makerTA:focus, #quizNotes:focus { 
+                color: teal; 
+                background-color: white;
+                border-color: teal;
+            }  
+            input[type="submit"] {
+                margin-top: 5px;
+            }
+            #pointTotal { margin-bottom: 0; }
+            .tooltip {
+                display:none;
+                position:absolute;
+                border:1px solid #333;
+                background-color:#161616;
+                border-radius:5px;
+                padding:10px;
+                color:#fff;
+                font-size:12px;
+            }
+
+		</style>
+	</head>
+	<body>
+		<header id="pageHeader">
+			<p>Quizzes for the Lazy<br>By Team Awesome</p>			
+		</header>
+
+		<hr>
+		<section id="maxTextWidth">
+			<header id="quizHeader">
+				<h1>Quiz Maker</h1>		
+			</header>
+			<form id="quizInfoForm" title="Enter the info for this quiz" class="masterTooltip">
+			    <div id="quizInfo">
+    			    <div id="quizInfoLeft">
+        				<label for="quizTitle">Quiz Title:</label><br>
+        				<label for="className">Class Name:</label><br>
+        				<label for="professor">Professor:</label><br>
+    				</div>
+    				<div id="quizInfoRight">
+        				<input type="text" class="fill-in quizInfoBlank" name="quizTitle" id="quizTitle" required><br>
+        				<input type="text" class="fill-in quizInfoBlank" name="className" id="className" required><br>
+        				<input type="text" class="fill-in quizInfoBlank" name="professor" id="professor" required><br>
+    				</div><br><br>
+    				
+    				<label id="timeLimit">Time limit: <input type="number" min="0" class="fill-in timer"> min</label><br>
+    		    </div><br>
+
+				<label for="quizNotes">Notes about the quiz:</label><br>
+				<textarea name="quizNotes" id="quizNotes" placeholder="Enter notes/instructions for your students"></textarea>
+			</form>
+			
+			<section id="currentQuestions" title="You can drag and change the order of the quiz" class="masterTooltip">
+			    <header>
+			        <h2 id="currQs">Current Questions:</h2>    
+			    </header>
+			  
+                <ol id="sortable">
+                    <li><div class="questions">
+                        <p>(1 point) How many integers are there in rainbow stew special combo number six pack?</p>
+                        <input type="radio" name="answers"> 10<br>
+                        <input type="radio" name="answers"> 100<br>
+                        <input type="radio" name="answers"> 1000<br>
+                        <input type="radio" name="answers"> None of the above.<br>
+                    </div></li>
+                    <li><div class="questions">
+                        <p>(2 points) What is the exact number in seconds since King Henry VIII had his last bagel for breaskfast?</p>
+                        Answer: <input type="text" class="quiz-fill-in">
+                    </div></li>
+                    <li><div class="questions">
+                        <p>(2 points) UCSD is ... (Check all that apply)<br></p>
+                        <input type="checkbox"> Okay<br>
+                        <input type="checkbox"> Not Okay<br>
+                        <input type="checkbox"> Silly<br>
+                        <input type="checkbox"> Handsome<br>
+                        <input type="checkbox"> Reasonable<br>
+                        <input type="checkbox"> Fun<br>
+                        <input type="checkbox"> Thomas<br>
+                    </div></li>
+                </ol>
+            </section>
+
+			<form id="addQuestions" title="Select the type of question you want to add" class="masterTooltip">
+				Add: <button type="button" onclick="func('short')">Short Answer</button>
+				<button type="button" onclick="func('multOne')">Multiple Choice (select one)</button>
+				<button type="button" onclick="func('multAll')">Multiple Choice (select multiple)</button>
+				<button type="button" onclick="func('tf')">True/False</button>
+				<button type="button" onclick="func('fill')">Fill-in</button>
+			</form>
+
+			<form id="short" style="display:none"><br>
+                <label class="points masterTooltip" title="Enter point value for this question">
+                    Points: <input type="number" min="0" class="fill-in fill-points">
+                </label><br>
+				<p class="instr">Enter the question in the top box. Enter the answer in the bottom box. 
+				                 Click "Add Alternate Answers" to add additional acceptable answers.</p>
+				<textarea name="question" class="makerTA masterTooltip" placeholder="Enter the question here" title="Enter the question" required></textarea><br>
+				<br>
+				<textarea name="answer" class="makerTA masterTooltip" placeholder="Enter the answer here" title="Enter the answer" required></textarea><br>
+                                <br>
+				<div id="shortSubmit">
+					<button type="button" onclick ="addAlt()">Add Alternate Answer</button><br>
+					<input type="submit" value="Submit">
+				</div>
+			</form>
+			
+            <form id="multOne" style="display:none"><br>
+                <label class="points masterTooltip" title="Enter point value for this question">
+                    Points: <input type="number" min="0" class="fill-in fill-points">
+                </label><br>
+                <textarea name="question" class="makerTA masterTooltip" placeholder="Enter the question here" title="Enter the question" required></textarea><br>
+                <div class="masterTooltip" title="Enter different answers choices">
+                    <p class="instr"> Check the button next to the correct answer.</p>
+                    <div id="rad1">
+                        <input type="radio">
+                        <input type="text" placeholder="Enter possible answer" class="fill-in fill-ans" required><br>
+                    </div>
+                    
+                    <div id="rad2">
+                        <input type="radio">
+                        <input type="text" placeholder="Enter possible answer" class="fill-in fill-ans" required><br>
+                    </div>
+                    
+                    <div id="rad3">
+                        <input type="radio">
+                        <input type="text" placeholder="Enter possible answer" class="fill-in fill-ans" required>
+                        <button type="button" onclick="deleteAns('rad3')"> Delete </button><br>
+                    </div>
+    
+                    <div id="rad4">
+                        <input type="radio">
+                        <input type="text" placeholder="Enter possible answer" class="fill-in fill-ans" required>
+                        <button type="button" onclick="deleteAns('rad4')"> Delete </button><br>
+                    </div>
+    
+                    <div id="multSubmitOne"><br>
+                        <button type="button" onclick= "addRChoice()">Add Choice</button><br>
+                        <input type="submit" value="Submit">
+                    </div>
+                </div>
+            </form>
+            
+			<form id="multAll" style="display:none"><br>
+                <label class="points masterTooltip" title="Enter point value for this question">
+                    Points: <input type="number" min="0" class="fill-in fill-points">
+                </label><br>
+				<textarea name="question" class="makerTA masterTooltip" placeholder="Enter the question here" title="Enter the question" required></textarea><br>
+				<div class="masterTooltip" title="Enter different answers choices">
+                    <p class="instr"> Check the boxes next to all correct answers.</p>
+    				<div id="ans1">
+    				    <input type="checkbox">
+    				    <input type="text" placeholder="Enter possible answer" class="fill-in fill-ans" required><br>
+                    </div>
+                    
+                    <div id="ans2">
+        				<input type="checkbox">
+        				<input type="text" placeholder="Enter possible answer" class="fill-in fill-ans" required><br>
+                    </div>
+                    
+                    <div id="ans3">
+        				<input type="checkbox">
+        				<input type="text" placeholder="Enter possible answer" class="fill-in fill-ans" required>
+        				<button type="button" onclick="deleteAns('ans3')"> Delete </button><br>
+    				</div>
+    
+                    <div id="ans4">
+        				<input type="checkbox">
+        				<input type="text" placeholder="Enter possible answer" class="fill-in fill-ans" required>
+        				<button type="button" onclick="deleteAns('ans4')"> Delete </button><br>
+    				</div>
+    				
+    				<div id="multSubmitAll"><br>
+                        <button type="button" onclick= "addCBChoice()">Add Choice</button><br>
+    					<input type="submit" value="Submit">
+    				</div>
+				</div>
+			</form>
+
+			<form id="tf" style="display:none"><br>
+                <label class="points masterTooltip" title="Enter point value for this question">
+                    Points: <input type="number" min="0" class="fill-in fill-points">
+                </label><br>
+				<textarea name="question" class="makerTA masterTooltip" placeholder="Enter the question here" title="Enter the question" required></textarea><br>
+				
+				<p class="instr masterTooltip" title="Select true or false for answer">Select answer: 
+				<label><input type="radio" name="TorF"> True</label> 
+				<label><input type="radio" name="TorF"> False</label><p class="instr"></p>
+				<input type="submit" value="Submit">
+			</form>
+
+			<form id="fill" style="display:none"><br>
+                <label class="points masterTooltip" title="Enter point value for this question">
+                    Points: <input type="number" min="0" class="fill-in fill-points">
+                </label><br>
+				<p class="instr">
+				    Enter the question in the box below. When you get to a blank, enter the answer in the blank below 
+				    and click "Add Blank". Continuing entering the question at the end of the text in the first box.
+			    </p>
+				<textarea id="fillBox" name="question" class="makerTA masterTooltip" placeholder="Enter the question" title="Enter the question" required></textarea><br><br>
+				<input type="text" placeholder="Enter the answer here" title="Enter the answer for the blank" class="fill-in fill-ans masterTooltip" id="blankStatement">
+				<button type="button" onclick="addBlank() "> Add Blank </button><br>
+				<input type="submit" value="Submit">
+			</form>
+
+            <p id="pointTotal"><strong>Total points:</strong> 5</p>
+			<form>
+				<input type="submit" value="Submit Quiz">
+			</form>
+		</section>
+	</body>
+</html>
